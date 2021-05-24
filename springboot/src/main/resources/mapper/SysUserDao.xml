@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuwork.framework.util.exception.dao.SysUserDao">
+
+    <resultMap id="BaseResultMap" type="com.liuwork.framework.util.exception.entity.SysUser">
+        <!--@Table sys_user-->
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="deptId" column="dept_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+        <result property="userLabel" column="user_label" jdbcType="VARCHAR"/>
+        <result property="userType" column="user_type" jdbcType="VARCHAR"/>
+        <result property="userStatus" column="user_status" jdbcType="INTEGER"/>
+        <result property="userEmail" column="user_email" jdbcType="VARCHAR"/>
+        <result property="userPhoenumber" column="user_phoenumber" jdbcType="INTEGER"/>
+        <result property="userSex" column="user_sex" jdbcType="VARCHAR"/>
+        <result property="userArater" column="user_arater" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
+        <result property="userBill" column="user_bill" jdbcType="VARCHAR"/>
+        <result property="userDate" column="user_date" jdbcType="TIMESTAMP"/>
+        <result property="userInterest" column="user_interest" jdbcType="VARCHAR"/>
+        <result property="userYear" column="user_year" jdbcType="INTEGER"/>
+        <result property="userLog" column="user_log" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          user_id, dept_id, user_name, nick_name, user_label, user_type, user_status, user_email, user_phoenumber, user_sex, user_arater, user_password, user_bill, user_date, user_interest, user_year, user_log
+        from wuyin_common.sys_user
+        where user_id = #{userId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          user_id, dept_id, user_name, nick_name, user_label, user_type, user_status, user_email, user_phoenumber, user_sex, user_arater, user_password, user_bill, user_date, user_interest, user_year, user_log
+        from wuyin_common.sys_user
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          user_id, dept_id, user_name, nick_name, user_label, user_type, user_status, user_email, user_phoenumber, user_sex, user_arater, user_password, user_bill, user_date, user_interest, user_year, user_log
+        from wuyin_common.sys_user
+        <where>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="deptId != null">
+                and dept_id = #{deptId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="nickName != null and nickName != ''">
+                and nick_name = #{nickName}
+            </if>
+            <if test="userLabel != null and userLabel != ''">
+                and user_label = #{userLabel}
+            </if>
+            <if test="userType != null and userType != ''">
+                and user_type = #{userType}
+            </if>
+            <if test="userStatus != null">
+                and user_status = #{userStatus}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and user_email = #{userEmail}
+            </if>
+            <if test="userPhoenumber != null">
+                and user_phoenumber = #{userPhoenumber}
+            </if>
+            <if test="userSex != null and userSex != ''">
+                and user_sex = #{userSex}
+            </if>
+            <if test="userArater != null and userArater != ''">
+                and user_arater = #{userArater}
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                and user_password = #{userPassword}
+            </if>
+            <if test="userBill != null and userBill != ''">
+                and user_bill = #{userBill}
+            </if>
+            <if test="userDate != null">
+                and user_date = #{userDate}
+            </if>
+            <if test="userInterest != null and userInterest != ''">
+                and user_interest = #{userInterest}
+            </if>
+            <if test="userYear != null">
+                and user_year = #{userYear}
+            </if>
+            <if test="userLog != null and userLog != ''">
+                and user_log = #{userLog}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
+        insert into wuyin_common.sys_user(dept_id, user_name, nick_name, user_label, user_type, user_status, user_email, user_phoenumber, user_sex, user_arater, user_password, user_bill, user_date, user_interest, user_year, user_log)
+        values (#{deptId}, #{userName}, #{nickName}, #{userLabel}, #{userType}, #{userStatus}, #{userEmail}, #{userPhoenumber}, #{userSex}, #{userArater}, #{userPassword}, #{userBill}, #{userDate}, #{userInterest}, #{userYear}, #{userLog})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wuyin_common.sys_user
+        <set>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="nickName != null and nickName != ''">
+                nick_name = #{nickName},
+            </if>
+            <if test="userLabel != null and userLabel != ''">
+                user_label = #{userLabel},
+            </if>
+            <if test="userType != null and userType != ''">
+                user_type = #{userType},
+            </if>
+            <if test="userStatus != null">
+                user_status = #{userStatus},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            <if test="userPhoenumber != null">
+                user_phoenumber = #{userPhoenumber},
+            </if>
+            <if test="userSex != null and userSex != ''">
+                user_sex = #{userSex},
+            </if>
+            <if test="userArater != null and userArater != ''">
+                user_arater = #{userArater},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userBill != null and userBill != ''">
+                user_bill = #{userBill},
+            </if>
+            <if test="userDate != null">
+                user_date = #{userDate},
+            </if>
+            <if test="userInterest != null and userInterest != ''">
+                user_interest = #{userInterest},
+            </if>
+            <if test="userYear != null">
+                user_year = #{userYear},
+            </if>
+            <if test="userLog != null and userLog != ''">
+                user_log = #{userLog},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wuyin_common.sys_user where user_id = #{userId}
+    </delete>
+
+</mapper>

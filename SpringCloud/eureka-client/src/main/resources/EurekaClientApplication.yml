@@ -1,0 +1,19 @@
+
+#服务端口
+server:
+  port: 8001
+#配置用户密码登录url
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:8080/eureka
+    fetch-registry: 'false'
+    register-with-eureka: 'false'
+#安全设置
+spring:
+  application:
+    name: EurekaClientApplication
+  security:
+    user:
+      name: admin
+      password: 123456

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--环境配置-->
+    <environments default="development">
+        <environment id="development">
+            <!--事物管理-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/springboot?userSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="user_name" value="liu"/>
+                <property name="password" value="258069"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--环境配置-->
+<!--     <environments default="test">-->
+<!--        <environment id="development">-->
+<!--            &lt;!&ndash;事物管理&ndash;&gt;-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/wuyin_common?userSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>-->
+<!--                <property name="user_name" value="root"/>-->
+<!--                <property name="password" value="258069"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+    <mappers>
+        <!-- 所有的路径以斜杠结尾-->
+        <mapper resource="com/liuwork/dao/UserManagerMapper.xml"/>
+    </mappers>
+</configuration>
